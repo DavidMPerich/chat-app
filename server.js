@@ -3,6 +3,9 @@ const net = require("net");
 const server = net.createServer();
 const clients = [];
 
+const PORT = 3000;
+const HOST = "127.0.0.1";
+
 server.on("connection", (socket) => {
     console.log("A new connection to the server!");
     const clientId = clients.length + 1;
@@ -37,6 +40,6 @@ server.on("connection", (socket) => {
     clients.push({ id: clientId.toString(), socket });
 });
 
-server.listen(3008, "127.0.0.1", () => {
+server.listen(PORT, HOST, () => {
     console.log("opened server on", server.address());
 });

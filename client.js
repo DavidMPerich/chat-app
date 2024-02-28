@@ -1,6 +1,9 @@
 const net = require("net");
 const readline = require("readline/promises");
 
+const PORT = 3000;
+const HOST = "127.0.0.1";
+
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -24,7 +27,7 @@ const moveCursor = (dx, dy) => {
 
 let id;
 
-const socket = net.createConnection({ host: "127.0.0.1", port: 3008 }, async () => {
+const socket = net.createConnection({ host: HOST, port: PORT }, async () => {
     console.log("Connected to the server!");
 
     const ask = async () => {
@@ -65,8 +68,6 @@ const socket = net.createConnection({ host: "127.0.0.1", port: 3008 }, async () 
         ask();
     });
 });
-
-
 
 socket.on("end", () => {
     console.log("Connection was ended!");
